@@ -1,0 +1,71 @@
+<style>
+	
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 1s;
+  }
+  
+  .rat1 {
+    width: 100px;
+    height: 100px;
+    background-image: url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png");
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+  }
+  
+  .button{
+    height: 180px;
+    width: 180px;
+    background-color: blue;
+    border-radius: 50%;
+    color: white;
+    font-size: 30px;
+  }
+  	
+</style>
+
+<body>
+  <button class="button" id="clicker">push for rat</button>
+</body>
+
+<script>
+   
+  let counter = 0
+  let timer 
+  
+  function runTimer () {
+    timer = setTimeout(runTimer, 1000)
+    counter++ 
+  }
+  
+  function clickUp () {
+    // creates ball
+    const rat1 = document.createElement('div')
+    rat1.className = 'rat1'
+    const x = Math.random() * 100
+    rat1.style.left = x + 'vw'
+    const y = Math.random() * 100
+    rat1.style.top = y + 'vh'
+			    document.body.appendChild(rat1)
+    // color logic 
+    if (counter < 3) {
+      rat1.style.backgroundImage = 'url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png")'
+    } else if (counter >= 3 && counter < 5) {
+      rat1.style.backgroundImage = 'green'
+    } else {
+      rat1.style.backgroundImage = 'blue'
+    }
+    // reset timer
+    clearTimeout(timer)
+    counter = 0
+  }
+
+ 		 const btn = document.querySelector('#clicker')
+  btn.addEventListener('mousedown', runTimer)
+  btn.addEventListener('mouseup', clickUp)
+  
+</script>
