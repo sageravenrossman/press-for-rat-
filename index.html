@@ -6,17 +6,18 @@
     justify-content: center;
     align-items: center;
     transition: background-color 1s;
-  }
-  
+  }  
+    
   .rat1 {
     background-repeat: no-repeat;
     background-size: contain;
+    position: absolute;
     height: 130px;  
     width: 130px;  
     background-image: url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png");
   		  top: 0vh;
     left: 0vw;  
-    z-index: 1;
+    z-index: -1;
   }
   
   .button{
@@ -42,6 +43,12 @@
   function runTimer () {
     timer = setTimeout(runTimer, 100)
     counter++ 
+  }
+  function bgcolor () {
+    const r = Math.random() * 255
+    const g = Math.random() * 255
+    const b = Math.random() * 255
+    document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
   }
   
   function clickUp () {
@@ -73,5 +80,6 @@
  		 const btn = document.querySelector('#clicker')
   btn.addEventListener('mousedown', runTimer)
   btn.addEventListener('mouseup', clickUp)
+  window.addEventListener('resize', bgcolor)
   
 </script>
