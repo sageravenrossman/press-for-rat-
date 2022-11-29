@@ -1,85 +1,89 @@
-<style>
-	
-  body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 1s;
-  }  
-    
-  .rat1 {
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    height: 130px;  
-    width: 130px;  
-    background-image: url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png");
-  		  top: 0vh;
-    left: 0vw;  
-    z-index: -1;
-  }
-  
-  .button{
-    height: 180px;
-    width: 180px;
-    background-color: blue;
-    border-radius: 50%;
-    color: white;
-    font-size: 30px;
-  }
-  	
-</style>
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>push for rat!</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 1s;
+      }
 
-<body>
-  <button class="button" id="clicker">push for rat</button>
-</body>
+      .rat1 {
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        height: 130px;
+        width: 130px;
+        background-image: url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png");
+        top: 0vh;
+        left: 0vw;
+        z-index: -1;
+      }
 
-<script>
-   
-  let counter = 0
-  let timer 
-  
-  function runTimer () {
-    timer = setTimeout(runTimer, 100)
-    counter++ 
-  }
-  function bgcolor () {
-    const r = Math.random() * 255
-    const g = Math.random() * 255
-    const b = Math.random() * 255
-    document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
-  }
-  
-  function clickUp () {
-    // creates ball
-    const rat1 = document.createElement('div')
-    rat1.className = 'rat1'
-    const x = Math.random() * 100
-    rat1.style.left = x + 'vw'
-    const y = Math.random() * 100
-    rat1.style.top = y + 'vh'
-			    document.body.appendChild(rat1)
-    // color logic  
-    if (counter < 2) {
-      rat1.style.backgroundImage = 'url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png")'
-    } else if (counter >= 2 && counter < 10) {
-      rat1.style.backgroundImage = 'url("https://www.pngmart.com/files/3/Rat-PNG-Clipart.png")' 
-      rat1.style.height = '400px' 
-      rat1.style.width = '400px'
-    } else {
-      rat1.style.backgroundImage = 'url("https://i.redd.it/twmpmy2ehlk51.png")'
-      rat1.style.height = '500px'
-      rat1.style.width = '500px'
+      .button {
+        height: 180px;
+        width: 180px;
+        background-color: blue;
+        border-radius: 50%;
+        color: white;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="button" id="clicker">push for rat</button>
+  </body>
+
+  <script>
+    let counter = 0
+    let timer
+
+    function runTimer() {
+      timer = setTimeout(runTimer, 100)
+      counter++
     }
-    // reset timer
-    clearTimeout(timer)
-    counter = 0
-  }
 
- 		 const btn = document.querySelector('#clicker')
-  btn.addEventListener('mousedown', runTimer)
-  btn.addEventListener('mouseup', clickUp)
-  window.addEventListener('resize', bgcolor)
-  
-</script>
+    function bgcolor() {
+      const r = Math.random() * 255
+      const g = Math.random() * 255
+      const b = Math.random() * 255
+      document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+    }
+
+    function clickUp() {
+      // creates ball
+      const rat1 = document.createElement('div')
+      rat1.className = 'rat1'
+      const x = Math.random() * 100
+      rat1.style.left = x + 'vw'
+      const y = Math.random() * 100
+      rat1.style.top = y + 'vh'
+      document.body.appendChild(rat1)
+      // color logic  
+      if (counter < 2) {
+        rat1.style.backgroundImage = 'url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png")'
+      } else if (counter >= 2 && counter < 10) {
+        rat1.style.backgroundImage = 'url("https://www.pngmart.com/files/3/Rat-PNG-Clipart.png")'
+        rat1.style.height = '400px'
+        rat1.style.width = '400px'
+      } else {
+        rat1.style.backgroundImage = 'url("https://i.redd.it/twmpmy2ehlk51.png")'
+        rat1.style.height = '500px'
+        rat1.style.width = '500px'
+      }
+      // reset timer
+      clearTimeout(timer)
+      counter = 0
+    }
+
+    const btn = document.querySelector('#clicker')
+    btn.addEventListener('mousedown', runTimer)
+    btn.addEventListener('mouseup', clickUp)
+    window.addEventListener('resize', bgcolor)
+  </script>
+</html>
