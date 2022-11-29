@@ -32,11 +32,30 @@
         color: white;
         font-size: 30px;
       }
+      
+      .progress{
+        width: 40%;
+        background-color: black;
+        top: 10%;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+      }
+      
+      .bar{
+        width: 1%;
+        height: 30px;
+        background-color: green;
+      }
+      
     </style>
   </head>
 
   <body>
     <button class="button" id="clicker">push for rat</button>
+    <div class="progress">loading...
+      <div class="bar"></div>
+    </div>
   </body>
 
   <script>
@@ -52,7 +71,12 @@
       const r = Math.random() * 255
       const g = Math.random() * 255
       const b = Math.random() * 255
-      document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+      const a = Math.random() * 0.5
+      document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b}, ${a})`
+    }
+    
+    function loading() {
+      
     }
 
     function clickUp() {
@@ -83,6 +107,7 @@
 
     const btn = document.querySelector('#clicker')
     btn.addEventListener('mousedown', runTimer)
+    btn.addEventListener('mousedown', loading)
     btn.addEventListener('mouseup', clickUp)
     window.addEventListener('resize', bgcolor)
   </script>
