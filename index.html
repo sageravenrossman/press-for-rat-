@@ -7,6 +7,7 @@
       body {
         height: 100vh;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         transition: background-color 1s;
@@ -40,6 +41,7 @@
         font-size: 20px;
         text-align: center;
         position: center;
+        z-index: 1;
       }
 
       .bar {
@@ -60,6 +62,7 @@
   <script>
     let counter = 0
     let timer
+    let timer2
 
     function runTimer() {
       timer = setTimeout(runTimer, 100)
@@ -75,16 +78,9 @@
     }
 
     function loading() {
-      const bar = document.createElement('div')
-      bar.className = 'bar'
-      document.body.appendChild('bar')
-      if (counter < 2) {
-        bar.style.width = `1%`
-      } else if (counter >= 2 && counter < 10) {
-        bar.style.width = `33%`
-      } else {
-        bar.style.width = `100%`
-      } 
+      const bar = document.querySelector('.bar')
+      bar.style.width = counter + '%'
+      timer2 = setTimeout(loading, 100)
     }
 
     function clickUp() {
@@ -110,6 +106,9 @@
       }
       // reset timer
       clearTimeout(timer)
+      clearTimeout(timer2)
+      const bar = document.querySelector('.bar')
+      bar.remove()
       counter = 0
     }
 
