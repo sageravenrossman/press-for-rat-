@@ -32,22 +32,21 @@
         color: white;
         font-size: 30px;
       }
-      
-      .progress{
+
+      .progress {
         width: 40%;
         background-color: black;
-        top: 10%;
         color: white;
         font-size: 20px;
         text-align: center;
+        position: center;
       }
-      
-      .bar{
+
+      .bar {
         width: 1%;
         height: 30px;
         background-color: green;
       }
-      
     </style>
   </head>
 
@@ -74,9 +73,18 @@
       const a = Math.random() * 0.5
       document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b}, ${a})`
     }
-    
+
     function loading() {
-      
+      const bar = document.createElement('div')
+      bar.className = 'bar'
+      document.body.appendChild('bar')
+      if (counter < 2) {
+        bar.style.width = `1%`
+      } else if (counter >= 2 && counter < 10) {
+        bar.style.width = `33%`
+      } else {
+        bar.style.width = `100%`
+      } 
     }
 
     function clickUp() {
