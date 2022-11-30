@@ -96,9 +96,9 @@
       if (counter < 2) {
         rat1.style.backgroundImage = 'url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png")'
       } else if (counter >= 2 && counter < 10) {
-        rat1.style.backgroundImage = 'url("https://www.pngmart.com/files/3/Rat-PNG-Clipart.png")'
-        rat1.style.height = '400px'
-        rat1.style.width = '400px'
+        rat1.style.backgroundImage = 'url("https://www.pngmart.com/files/3/Rat-PNG-Clipart.png")' 
+        rat1.style.height = '400px'   
+        rat1.style.width = '400px' 
       } else {
         rat1.style.backgroundImage = 'url("https://i.redd.it/twmpmy2ehlk51.png")'
         rat1.style.height = '500px'
@@ -108,7 +108,9 @@
       clearTimeout(timer)
       clearTimeout(timer2)
       const bar = document.querySelector('.bar')
+      const progress = document.querySelector('.progress')
       bar.remove()
+      progress.remove()
       counter = 0
     }
 
