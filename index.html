@@ -50,6 +50,16 @@
         height: 20px;
         background-color: green;
       }
+      
+      .info{
+        font-size: 20px;
+        width: 40%;
+        background-color: black;
+        color: white;
+        text-align: center;
+        position: center;
+      }
+        
     </style>
   </head>
 
@@ -88,6 +98,7 @@
       // creates ball
       const rat1 = document.createElement('div')
       rat1.className = 'rat1'
+      const info = document.createElement('div')
       const x = Math.random() * 100
       rat1.style.left = x + 'vw'
       const y = Math.random() * 100
@@ -95,10 +106,11 @@
       document.body.appendChild(rat1)
       // color logic  
       if (counter < 2) {
-        rat1.style.backgroundImage = 'url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png")'
+        rat1.style.backgroundImage = 'url(baby.png)'
+        info.style.
       } else if (counter >= 2 && counter < 10) {
-        rat1.style.backgroundImage = 'url("https://www.pngmart.com/files/3/Rat-PNG-Clipart.png")' 
-        rat1.style.height = '450px'   
+        rat1.style.backgroundImage = 'url(man.png)' 
+        rat1.style.height = '450px'      
         rat1.style.width = '450px' 
       } else {
         rat1.style.backgroundImage = 'url(absoluteunit.png)'
@@ -106,12 +118,12 @@
         rat1.style.width = '500px'
       }
       // reset timer
-      clearTimeout(timer)
-      clearTimeout(timer2)
       const bar = document.querySelector('.bar')
       const progress = document.querySelector('.progress')
       bar.remove()
       progress.remove()
+      clearTimeout(timer)
+      clearTimeout(timer2)
       counter = 0
     }
 
