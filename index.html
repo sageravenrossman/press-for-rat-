@@ -65,7 +65,7 @@
   </head>
 
   <body>
-    <div class="info">Congrats! You've discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus. </div>
+    <div class="info"></div>
     <button class="button" id="clicker">push for rat</button>
   
     <div class="progress">loading...
@@ -110,6 +110,9 @@
       // color logic  
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
+        const info = document.createElement('div')
+        info.classList.add('info')
+        info.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind' 
       } else if (counter >= 2 && counter < 10) {
         rat1.style.backgroundImage = 'url(man.png)' 
         rat1.style.height = '450px'      
@@ -129,11 +132,28 @@
       clearTimeout(timer2)
       counter = 0
     }
+    
+    function showInfo () {
+      if (counter < 2) { 
+        const info = document.createElement('div')
+        info.classList.add('info')
+        info.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind' 
+      } else if (counter >= 2 && counter < 10) {
+        const info = document.createElement('div')
+        info.className = 'info'
+        info.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man, he promises.' 
+      } else {
+        const info = document.createElement('div')
+        info.className = 'info'
+        info.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus.'
+      }
+    }
 
     const btn = document.querySelector('#clicker')
     btn.addEventListener('mousedown', runTimer)
     btn.addEventListener('mousedown', loading)
     btn.addEventListener('mouseup', clickUp)
+    btn.addEventListener('mouseup', showInfo)
     window.addEventListener('resize', bgcolor)
   </script>
 </html>
