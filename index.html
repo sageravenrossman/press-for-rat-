@@ -53,8 +53,9 @@
       
       .info{
         font-size: 20px;
-        width: 40%;
-        background-color: black;
+        width: 250px;
+        background-color: pink;
+        border-radius: 10%;
         color: white;
         text-align: center;
         position: center;
@@ -64,7 +65,9 @@
   </head>
 
   <body>
+    <div class="info">Congrats! You've discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus. </div>
     <button class="button" id="clicker">push for rat</button>
+  
     <div class="progress">loading...
       <div class="bar"></div>
     </div>
@@ -107,11 +110,11 @@
       // color logic  
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
-        info.style.
       } else if (counter >= 2 && counter < 10) {
         rat1.style.backgroundImage = 'url(man.png)' 
         rat1.style.height = '450px'      
         rat1.style.width = '450px' 
+        info.textContent = 'Congrats! You have discovered Chungus the Humungo Rat.' 
       } else {
         rat1.style.backgroundImage = 'url(absoluteunit.png)'
         rat1.style.height = '500px'
