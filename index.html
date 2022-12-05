@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>push for rat!</title>
+    <title>new and improved rat!</title>
     <style>
       body {
         height: 100vh;
@@ -10,8 +10,33 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: rgb(150, 220, 250);
         transition: background-color 1s;
       }
+
+      .button {
+        height: 150px;
+        width: 150px;
+        background-color: rgb(0, 0, 255, 0.5);
+        border-radius: 50%;
+        color: white;  
+        border-width: medium; 
+        font-size: 30px; 
+        z-index: 1;
+      }
+
+      .reset {
+        height: 50px;
+        width: 50px;
+        background-color: rgb(77, 127, 255, 0.5);
+        border-radius: 50%;
+        color: white;
+        font-size: 15px; 
+        position: top right;
+        margin: 30px;
+        z-index: 1;
+        border-width: medium; 
+      } 
 
       .rat1 {
         background-repeat: no-repeat;
@@ -19,141 +44,152 @@
         position: absolute;
         height: 130px;
         width: 130px;
-        background-image: url("https://www.pngkey.com/png/full/69-695912_mouse-animal-transparent-baby-mouse-pillow-case.png");
         top: 0vh;
         left: 0vw;
-        z-index: -1;
+        z-index: 0;
       }
 
-      .button {
-        height: 180px;
-        width: 180px;
-        background-color: blue;
-        border-radius: 50%;
-        color: white;
-        font-size: 30px;
-      }
-
-      .progress {
-        width: 40%;
-        background-color: black;
-        color: white;
-        font-size: 20px;
-        text-align: center;
-        position: center;
-        z-index: 1;
-        overflow: hidden;
-      }
-
-      .bar {
-        width: 1%;
-        height: 20px;
-        background-color: green;
-      }
-      
-      .info{
+      .text {
         font-size: 20px;
         width: 250px;
         background-color: pink;
         border-radius: 10%;
         color: white;
         text-align: center;
-        position: center;
+
       }
-        
+
+      #info {
+        margin: 20px; 
+        padding: 20px;
+        position: absolute; 
+        text-align: center;
+        top: 0px;
+        color: black;
+        width: 80vw; 
+        border-radius: 20%;
+        font-family: Comic Sans MS, Comic Sans, cursive;
+        font-style: bold; 
+        z-index: 1;
+      }
+
+      #progress {
+        width: 200px;
+        color: black;
+        font-size: 20px;
+        text-align: center;
+        position: center;
+        z-index: 1;
+        overflow: hidden;
+        border: 2px solid black;
+        border-radius: 50%;
+      } 
+
+      #bar {
+        width: 1%; 
+        height: 20px;
+        background-color: rgb(0, 0, 255, 0.7);
+      }
     </style>
   </head>
 
   <body>
-    <div class="info"></div>
+    <div id="info"></div>
     <button class="button" id="clicker">push for rat</button>
-  
-    <div class="progress">loading...
-      <div class="bar"></div>
+    <button class="reset" id="press">reset</button>
+    <div id="progress">loading...
+      <div id="bar"></div>
     </div>
+    <audio src="sweetdreams2.mp3" id="sweetdreams"></audio>
+    <audio src="ridindirty.mp3" id="ridindirty"></audio>
+    <audio src="backinblack.mp3" id="backinblack"></audio>
+    <audio src="tiptoe.mp3" id="tiptoe"></audio>
   </body>
 
   <script>
     let counter = 0
-    let timer
-    let timer2
+    let timer = 0
+
+    const p = document.querySelector('#info')
+    const bar = document.querySelector('#bar')
+    const sweetdreams = document.querySelector('#sweetdreams')
+    const ridindirty = document.querySelector('#ridindirty')
+    const tiptoe = document.querySelector('#tiptoe')
+    const backinblack = document.querySelector('#backinblack')
 
     function runTimer() {
       timer = setTimeout(runTimer, 100)
       counter++
+      bar.style.width = counter * 5 + '%'
     }
 
-    function bgcolor() {
-      const r = Math.random() * 255
-      const g = Math.random() * 255
-      const b = Math.random() * 255
-      const a = Math.random() * 0.5
-      document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b}, ${a})`
-    }
-
-    function loading() {
-      const bar = document.querySelector('.bar')
-      bar.style.width = counter + '%'
-      timer2 = setTimeout(loading, 100)
+    function resetbar() {
+      bar.style.width = 0
+      sweetdreams.pause()
+      sweetdreams.currentTime = 0
+      tiptoe.pause()
+      tiptoe.currentTime = 0
+      backinblack.pause()
+      backinblack.currentTime = 0
+      ridindirty.pause()
+      ridindirty.currentTime = 0
     }
 
     function clickUp() {
-      // creates ball
+      // creates rat
       const rat1 = document.createElement('div')
       rat1.className = 'rat1'
-      const info = document.createElement('div')
       const x = Math.random() * 100
       rat1.style.left = x + 'vw'
       const y = Math.random() * 100
       rat1.style.top = y + 'vh'
       document.body.appendChild(rat1)
-      // color logic  
+        
       if (counter < 2) {
         rat1.style.backgroundImage = 'url(baby.png)'
-        const info = document.createElement('div')
-        info.classList.add('info')
-        info.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind' 
+        p.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind. Pipsqueak bids you a good day, and leaves you with a bushel of apples'
+        p.style.backgroundColor = 'rgb(250, 100, 100, 0.5)'
+        tiptoe.play()
       } else if (counter >= 2 && counter < 10) {
-        rat1.style.backgroundImage = 'url(man.png)' 
-        rat1.style.height = '450px'      
-        rat1.style.width = '450px' 
-        info.textContent = 'Congrats! You have discovered Chungus the Humungo Rat.' 
-      } else {
+        rat1.style.backgroundImage = 'url(man.png)'
+        rat1.style.height = '450px'
+        rat1.style.width = '450px'
+        sweetdreams.play()
+        p.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man. "No really, a totally regular guy!" says Regular Dude. He politely asks for your kneecaps'
+        p.style.backgroundColor = 'rgb(150, 50, 200, 0.5)'
+      } else if (counter >= 10 && counter < 20) {
         rat1.style.backgroundImage = 'url(absoluteunit.png)'
+        rat1.style.height = '450px'
+        rat1.style.width = '450px'
+        backinblack.currentTime = 5
+        backinblack.play()
+        p.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus. He means it - you should hire someone good.'
+        p.style.backgroundColor = 'rgb(100, 100, 250, 0.5)'
+      } else {
+        rat1.style.backgroundImage = 'url(fat.png)'
         rat1.style.height = '500px'
         rat1.style.width = '500px'
+        ridindirty.currentTime = 13
+        ridindirty.play()
+        p.textContent = 'Congrats! This is The Boss. The Boss was dropped on his head A LOT as a child. As a result, he shows no mercy, and you should run now. "Boss Hungry, Boss eat" says The Boss'
+        p.style.backgroundColor = 'rgb(100, 250, 100, 0.5)'
       }
       // reset timer
-      const bar = document.querySelector('.bar')
-      const progress = document.querySelector('.progress')
-      bar.remove()
-      progress.remove()
       clearTimeout(timer)
-      clearTimeout(timer2)
       counter = 0
+      timer = 0
     }
-    
-    function showInfo () {
-      if (counter < 2) { 
-        const info = document.createElement('div')
-        info.classList.add('info')
-        info.textContent = 'Congrats! You have discovered Pipsqueak McTiny. He is just a child, so please be kind' 
-      } else if (counter >= 2 && counter < 10) {
-        const info = document.createElement('div')
-        info.className = 'info'
-        info.textContent = 'Congrats! You have discovered Regular Dude the Rat. He is a normal man, he promises.' 
-      } else {
-        const info = document.createElement('div')
-        info.className = 'info'
-        info.textContent = 'Congrats! You have discovered Chungus the Humungo Rat. He will now sieze your assets. "Lawyer up, buckaroo!!" says Chungus.'
-      }
+
+    function reset() {
+      window.location.reload();
     }
 
     const btn = document.querySelector('#clicker')
+    const undo = document.querySelector('#press')
     btn.addEventListener('mousedown', runTimer)
-    btn.addEventListener('mousedown', loading)
+    btn.addEventListener('mousedown', resetbar)
     btn.addEventListener('mouseup', clickUp)
-    btn.addEventListener('mouseup', showInfo)
-    window.addEventListener('resize', bgcolor)
+    undo.addEventListener('mousedown', reset)
   </script>
+
 </html>
